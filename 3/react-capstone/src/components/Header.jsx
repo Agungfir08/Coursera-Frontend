@@ -3,7 +3,7 @@ import RestauranImage from '../assets/icons/restauranfood.jpg';
 
 export default function Header() {
     return (
-        <header className=' max-h-[400px] bg-[--green] py-10 flex items-start justify-between overflow-visible'>
+        <header className=' max-h-[400px] bg-[--green] py-10 flex items-start justify-between'>
             <div className=' max-w-[340px] flex flex-col gap-[13px] '>
                 <div>
                     <h1 className=' text-6xl font-bold font-[Markazi] text-[--yellow]'>
@@ -19,13 +19,12 @@ export default function Header() {
                 </p>
                 <Button text='Reserve Online' />
             </div>
-            <div className=' '>
-                <img
-                    src={RestauranImage}
-                    alt='header image'
-                    className='object-cover w-[375px] h-[425px] rounded-xl'
-                />
-            </div>
+
+            <img
+                src={RestauranImage}
+                alt='header image'
+                className='object-cover w-[375px] h-[425px] rounded-xl block'
+            />
         </header>
     );
 }
