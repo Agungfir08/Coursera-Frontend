@@ -1,9 +1,13 @@
-import './App.css'
+import Header from "./components/Header"
+import Nav from "./components/Nav"
 
 function App() {
 
   return (
-    <h1>Test</h1>
+    <>
+    <Nav></Nav>
+    <Header/>
+    </>
   )
 }
 
