@@ -1,14 +1,15 @@
-import Header from "./components/Header"
-import Nav from "./components/Nav"
+import Header from './components/Header';
+import Main from './components/Main';
+import Nav from './components/Nav';
 
 function App() {
-
-  return (
-    <>
-    <Nav></Nav>
-    <Header/>
-    </>
-  )
+    return (
+        <div className=''>
+            <Nav />
+            <Header />
+            <Main />
+        </div>
+    );
 }
 
-export default App
+export default App;
