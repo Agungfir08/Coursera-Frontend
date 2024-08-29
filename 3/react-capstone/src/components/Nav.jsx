@@ -29,17 +29,21 @@ export default function Nav() {
     ];
 
     return (
-        <nav className='flex items-center justify-between py-5'>
-            <img src={logo} />
-            <ul className=' flex gap-4 text-base font-bold font-[karla]'>
-                {navList.map((nav) => {
-                    return (
-                        <li key={nav.name} className=' hover:text-[--green]'>
-                            <a href={nav.link}>{nav.name}</a>
-                        </li>
-                    );
-                })}
-            </ul>
-        </nav>
+        <header>
+            <nav className="flex items-center justify-between py-5">
+                <img src={logo} />
+                <ul className=" flex gap-4 text-base font-bold font-[karla]">
+                    {navList.map((nav) => {
+                        return (
+                            <li
+                                key={nav.name}
+                                className=" hover:text-[--green]">
+                                <a href={nav.link}>{nav.name}</a>
+                            </li>
+                        );
+                    })}
+                </ul>
+            </nav>
+        </header>
     );
 }

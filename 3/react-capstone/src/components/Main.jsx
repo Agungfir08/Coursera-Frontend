@@ -30,12 +30,12 @@ export default function Main() {
     ];
 
     return (
-        <main>
-            <div className='flex justify-between'>
-                <h1 className='text-6xl font-[Merkari]'>This Week Specials!</h1>
-                <Button text='Online Menu' />
+        <section className="flex flex-col gap-16">
+            <div className="flex justify-between">
+                <h1 className="text-6xl font-[Merkari]">This Week Specials!</h1>
+                <Button text="Online Menu" />
             </div>
-            <div className=' flex justify-between'>
+            <div className=" flex justify-between">
                 {Menu.map((menuItem) => {
                     return (
                         <Card
@@ -48,6 +48,6 @@ export default function Main() {
                     );
                 })}
             </div>
-        </main>
+        </section>
     );
 }
