@@ -1,10 +1,10 @@
-import Button from './Button';
+import Button from './UI/Button';
 import RestauranImage from '../assets/icons/restauranfood.jpg';
 
-export default function Header() {
+export default function Hero() {
     return (
-        <section className="mb-20">
-            <div className=" max-h-[400px] bg-[--green] py-10 flex justify-between">
+        <section className="max-h-[400px] bg-[--green] mb-20">
+            <div className=" container mx-auto xl:px-40 lg:px-16 py-10 flex justify-between">
                 <div className=" max-w-[340px] flex flex-col gap-[13px] ">
                     <div>
                         <h1 className=" text-6xl font-bold font-[Markazi] text-[--yellow]">

@@ -1,10 +1,10 @@
-import Button from './Button';
-import Card from './Card';
+import Button from './UI/Button';
+import Card from './UI/Card';
 import SaladImage from '../assets/icons/greek salad.jpg';
 import BruchettaImage from '../assets/icons/bruchetta.svg';
 import LemonImage from '../assets/icons/lemon dessert.jpg';
 
-export default function Main() {
+export default function Specials() {
     const Menu = [
         {
             name: 'Greek Salad',
@@ -30,7 +30,7 @@ export default function Main() {
     ];
 
     return (
-        <section className="flex flex-col gap-16">
+        <section className="container mx-auto flex xl:px-40 lg:px-16 flex-col gap-16">
             <div className="flex justify-between">
                 <h1 className="text-6xl font-[Merkari]">This Week Specials!</h1>
                 <Button text="Online Menu" />

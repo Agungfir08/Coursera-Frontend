@@ -1,5 +1,4 @@
-import Card from './Card';
-import CardTestimonial from './CardTestimonial';
+import CardTestimonial from './UI/CardTestimonial';
 
 export default function Testimonial() {
     const testimonialPeople = [
@@ -30,12 +29,12 @@ export default function Testimonial() {
     ];
 
     return (
-        <section className="mt-20">
-            <div className=" bg-[--green] flex flex-col items-center py-28 gap-14">
+        <section className="bg-[--green] mt-20">
+            <div className="container mx-auto xl:px-40 lg:px-16 flex flex-col items-center py-28 gap-14">
                 <h1 className=" font-[Markazi] text-5xl text-[--yellow] font-bold">
                     Testimonial
                 </h1>
-                <div className=" flex justify-between gap-6">
+                <div className="w-full flex justify-between">
                     {testimonialPeople.map((person) => {
                         return (
                             <CardTestimonial

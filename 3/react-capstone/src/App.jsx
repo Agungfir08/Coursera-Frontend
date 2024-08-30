@@ -1,18 +1,18 @@
 import About from './components/About';
-import Header from './components/Header';
-import Main from './components/Main';
-import Nav from './components/Nav';
+import Footer from './components/Home/Footer';
+import Header from './components/Hero';
+import Specials from './components/Specials';
+import Nav from './components/Home/Nav';
 import Testimonial from './components/Testimonial';
+import Main from './components/Home/Main';
 
 function App() {
     return (
-        <div className="">
+        <>
             <Nav />
-            <Header />
             <Main />
-            <Testimonial />
-            <About />
-        </div>
+            <Footer />
+        </>
     );
 }
 

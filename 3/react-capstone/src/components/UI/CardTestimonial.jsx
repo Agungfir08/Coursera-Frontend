@@ -1,6 +1,6 @@
 export default function CardTestimonial({ name, position, testimonial }) {
     return (
-        <div className="bg-white w-[200px] h-[175px] rounded-xl p-4">
+        <div className="bg-white w-[200px] h-[175px] rounded-xl p-4 hover:drop-shadow-lg hover:scale-105 transition hover:cursor-pointer">
             <div className="flex flex-col gap-4 pt-6">
                 <div className="flex items-center gap-2">
                     <div className="bg-gray-300 w-[34px] h-[34px] rounded-full"></div>
