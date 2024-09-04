@@ -1,7 +1,7 @@
 export const navList = [
     {
         name: 'Home',
-        link: '#',
+        link: '/',
     },
     {
         name: 'About',
@@ -13,7 +13,7 @@ export const navList = [
     },
     {
         name: 'Reservation',
-        link: '#',
+        link: 'reservation',
     },
     {
         name: 'Order Online',

@@ -1,7 +1,13 @@
 import Button from './UI/Button';
 import RestauranImage from '../assets/icons/restauranfood.jpg';
+import { useNavigate } from 'react-router-dom';
 
 export default function Hero() {
+    const navigate = useNavigate();
+
+    const handleReserve = () => {
+        navigate('/reservation');
+    };
     return (
         <section className="max-h-[400px] bg-[--green] mb-20">
             <div className=" container mx-auto xl:px-40 lg:px-16 py-10 flex justify-between">
@@ -18,7 +24,7 @@ export default function Hero() {
                         We are family owned Mediterranean restaurant, focused on
                         traditional recipes served with a modern twist.
                     </p>
-                    <Button text="Reserve Online" />
+                    <Button text="Reserve Online" onClick={handleReserve} />
                 </div>
 
                 <img

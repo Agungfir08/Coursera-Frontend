@@ -1,16 +1,25 @@
-import About from './components/About';
 import Footer from './components/Home/Footer';
-import Header from './components/Hero';
-import Specials from './components/Specials';
 import Nav from './components/Home/Nav';
-import Testimonial from './components/Testimonial';
 import Main from './components/Home/Main';
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import Reservation from './components/Reservation/Reservation';
 
 function App() {
+    const route = createBrowserRouter([
+        {
+            path: '/',
+            element: <Main />,
+        },
+        {
+            path: '/reservation',
+            element: <Reservation />,
+        },
+    ]);
+
     return (
         <>
             <Nav />
-            <Main />
+            <RouterProvider router={route} />
             <Footer />
         </>
     );

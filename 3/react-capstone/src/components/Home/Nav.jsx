@@ -3,7 +3,7 @@ import { navList } from '../Menu';
 
 export default function Nav() {
     return (
-        <header>
+        <header className="sticky top-0 w-screen bg-white z-10">
             <nav className="container mx-auto xl:px-40 lg:px-16 flex items-center justify-between py-5">
                 <img src={logo} />
                 <ul className=" flex gap-4 text-base font-bold font-[karla]">
