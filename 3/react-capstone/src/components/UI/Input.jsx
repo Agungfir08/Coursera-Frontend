@@ -5,6 +5,7 @@ export default function Input({
     onChange,
     type,
     placeholder,
+    error,
     props,
 }) {
     return (
@@ -19,9 +20,16 @@ export default function Input({
                 value={value}
                 onChange={onChange}
                 placeholder={placeholder}
-                className="rounded-lg border-2 border-gray-300 w-[450px] h-[40px] px-4 active:outline-none focus:outline-gray-400"
+                className={`rounded-lg border-2 w-[450px] h-[40px] px-4 active:outline-none focus:outline-gray-400 ${
+                    error ? 'border-red-500' : 'border-gray-300'
+                }`}
                 {...props}
             />
+            {error && (
+                <p className="font-[Karla] text-red-500 font-bold text-sm">
+                    {error}
+                </p>
+            )}
         </div>
     );
 }

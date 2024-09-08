@@ -3,14 +3,22 @@ import Input from '../UI/Input';
 import * as Yup from 'yup';
 import Dropdown from '../UI/Dropdown';
 import Button from '../UI/Button';
+import { useReducer as reducer, initialState } from '../../hooks/useReducer';
+import { useEffect, useReducer, useContext } from 'react';
+import useSubmit from '../../hooks/useSubmit';
+import { ModalContext } from '../context/modalContext';
 
 export default function Reservation() {
+    const [state, dispatch] = useReducer(reducer, initialState);
+    const { response, submit } = useSubmit();
+    const { onOpen } = useContext(ModalContext);
+
     const formik = useFormik({
         initialValues: {
             name: '',
             phone: '',
             guest: '',
-            email: '',
+            time: '',
             date: '',
             occasion: '',
             instruction: '',
@@ -18,17 +26,30 @@ export default function Reservation() {
         validationSchema: Yup.object({
             name: Yup.string().required('Required'),
             phone: Yup.number().required('Required'),
-            guest: Yup.number().required('Required'),
-            email: Yup.string()
-                .email('Invalid email address')
-                .required('Required'),
+            guest: Yup.number()
+                .min(1)
+                .max(10)
+                .required('Required with max guests is 10'),
+            time: Yup.string().required('Required'),
             date: Yup.date().required('Required'),
+            occasion: Yup.string().required('Required'),
         }),
         onSubmit: (values, { resetForm }) => {
-            console.log('Successfully submitted');
+            selectTime();
+            submit(values);
             resetForm();
         },
     });
+
+    useEffect(() => {
+        if (response) {
+            onOpen(response.success, response.message);
+        }
+    }, []);
+
+    const selectTime = () => {
+        dispatch({ type: 'SELECT_TIME', payload: formik.values.time });
+    };
 
     return (
         <section className="bg-[--green]">
@@ -45,6 +66,7 @@ export default function Reservation() {
                                 name="name"
                                 value={formik.values.name}
                                 onChange={formik.handleChange}
+                                error={formik.errors.name}
                                 placeholder={'Enter your name'}
                             />
 
@@ -54,6 +76,7 @@ export default function Reservation() {
                                 name="phone"
                                 value={formik.values.phone}
                                 onChange={formik.handleChange}
+                                error={formik.errors.phone}
                                 placeholder="08XXXXXXX"
                                 inputMode="numeric"
                             />
@@ -65,16 +88,17 @@ export default function Reservation() {
                                 name="guest"
                                 value={formik.values.guest}
                                 onChange={formik.handleChange}
+                                error={formik.errors.guest}
                                 placeholder="e.g. 2"
                                 inputMode="numeric"
                             />
-                            <Input
-                                text="Email"
-                                type="email"
-                                name="email"
-                                value={formik.values.email}
+                            <Dropdown
+                                name="time"
+                                text="Time"
+                                value={formik.values.time}
                                 onChange={formik.handleChange}
-                                placeholder="Enter your email"
+                                error={formik.errors.time}
+                                option={state.availableTimes}
                             />
                         </div>
                         <div className="flex justify-between">
@@ -84,6 +108,7 @@ export default function Reservation() {
                                 name="date"
                                 value={formik.values.date}
                                 onChange={formik.handleChange}
+                                error={formik.errors.date}
                                 placeholder="Select date"
                             />
                             <Dropdown
@@ -92,6 +117,7 @@ export default function Reservation() {
                                 value={formik.values.occasion}
                                 onChange={formik.handleChange}
                                 option={['Birthday', 'Wedding', 'Anniversary']}
+                                error={formik.errors.occasion}
                             />
                         </div>
                         <div className="flex flex-col gap-2 font-[Karla]">

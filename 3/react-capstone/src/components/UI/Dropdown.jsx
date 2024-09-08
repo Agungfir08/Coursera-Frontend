@@ -1,4 +1,11 @@
-export default function Dropdown({ option, name, text, onChange, value }) {
+export default function Dropdown({
+    option,
+    name,
+    text,
+    onChange,
+    value,
+    error,
+}) {
     return (
         <div className="flex flex-col gap-2 font-[Karla]">
             <label htmlFor={name} className="text-white text-lg font-bold">
@@ -9,7 +16,9 @@ export default function Dropdown({ option, name, text, onChange, value }) {
                 name={name}
                 onChange={onChange}
                 value={value}
-                className="rounded-lg border-2 border-gray-300 w-[450px] h-[40px] px-4 block active:outline-none focus:outline-gray-400">
+                className={`rounded-lg border-2 ${
+                    error ? 'border-red-500' : 'border-gray-300'
+                } w-[450px] h-[40px] px-4 block active:outline-none focus:outline-gray-400`}>
                 <option value="" disabled hidden>
                     Select {text}
                 </option>
@@ -21,6 +30,11 @@ export default function Dropdown({ option, name, text, onChange, value }) {
                     );
                 })}
             </select>
+            {error && (
+                <p className="font-[Karla] text-red-500 font-bold text-sm">
+                    {error}
+                </p>
+            )}
         </div>
     );
 }
