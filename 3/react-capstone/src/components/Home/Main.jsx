@@ -1,16 +1,12 @@
-import React from 'react';
-import Hero from '../Hero';
-import Specials from '../Specials';
-import Testimonial from '../Testimonial';
-import About from '../About';
+import Nav from './Nav';
+import Footer from './Footer';
 
-export default function Main() {
+export default function Main({ children }) {
     return (
-        <main>
-            <Hero />
-            <Specials />
-            <Testimonial />
-            <About />
-        </main>
+        <>
+            <Nav />
+            <main>{children}</main>
+            <Footer />
+        </>
     );
 }

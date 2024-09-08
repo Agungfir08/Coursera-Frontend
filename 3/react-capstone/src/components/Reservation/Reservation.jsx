@@ -4,14 +4,14 @@ import * as Yup from 'yup';
 import Dropdown from '../UI/Dropdown';
 import Button from '../UI/Button';
 import { useReducer as reducer, initialState } from '../../hooks/useReducer';
-import { useEffect, useReducer, useContext } from 'react';
+import { useReducer } from 'react';
 import useSubmit from '../../hooks/useSubmit';
-import { ModalContext } from '../context/modalContext';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export default function Reservation() {
     const [state, dispatch] = useReducer(reducer, initialState);
     const { response, submit } = useSubmit();
-    const { onOpen } = useContext(ModalContext);
 
     const formik = useFormik({
         initialValues: {
@@ -38,14 +38,20 @@ export default function Reservation() {
             selectTime();
             submit(values);
             resetForm();
+            console.log(response);
+            if (response.success) {
+                toast.success(response?.message, {
+                    position: 'top-center',
+                    autoClose: 2000,
+                });
+            } else {
+                toast.error(response?.message, {
+                    position: 'top-center',
+                    autoClose: 2000,
+                });
+            }
         },
     });
-
-    useEffect(() => {
-        if (response) {
-            onOpen(response.success, response.message);
-        }
-    }, []);
 
     const selectTime = () => {
         dispatch({ type: 'SELECT_TIME', payload: formik.values.time });
