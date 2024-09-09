@@ -38,7 +38,13 @@ export default function Reservation() {
             selectTime();
             submit(values);
             resetForm();
+            handleResponse(response);
             console.log(response);
+        },
+    });
+
+    function handleResponse(response) {
+        if (response) {
             if (response.success) {
                 toast.success(response?.message, {
                     position: 'top-center',
@@ -50,8 +56,13 @@ export default function Reservation() {
                     autoClose: 2500,
                 });
             }
-        },
-    });
+        } else {
+            toast.error('Server Error', {
+                position: 'top-center',
+                autoClose: 2500,
+            });
+        }
+    }
 
     const handleDateChange = (e) => {
         const selectedDate = e.target.value;
