@@ -42,16 +42,22 @@ export default function Reservation() {
             if (response.success) {
                 toast.success(response?.message, {
                     position: 'top-center',
-                    autoClose: 2000,
+                    autoClose: 2500,
                 });
             } else {
                 toast.error(response?.message, {
                     position: 'top-center',
-                    autoClose: 2000,
+                    autoClose: 2500,
                 });
             }
         },
     });
+
+    const handleDateChange = (e) => {
+        const selectedDate = e.target.value;
+        formik.setFieldValue('date', selectedDate);
+        dispatch({ type: 'AVAILABLE_TIME', payload: selectedDate });
+    };
 
     const selectTime = () => {
         dispatch({ type: 'SELECT_TIME', payload: formik.values.time });
@@ -113,7 +119,7 @@ export default function Reservation() {
                                 type="date"
                                 name="date"
                                 value={formik.values.date}
-                                onChange={formik.handleChange}
+                                onChange={handleDateChange}
                                 error={formik.errors.date}
                                 placeholder="Select date"
                             />
